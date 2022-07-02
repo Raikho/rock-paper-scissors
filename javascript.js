@@ -82,6 +82,7 @@ function playRound() {
     let resultText = getResultText(result, playerSelection, computerSelection);
     console.log(resultText);
 
+    document.querySelector('#result').textContent = resultText;
 }
 
 playRound();
