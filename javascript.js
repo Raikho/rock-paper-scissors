@@ -29,10 +29,23 @@ function computerPlay() {
     return computerSelection;
 }
 
-// TODO: create function to calculate winner
 // calculates result of round
 function getResult(playerSelection, computerSelection) {
-    return "tie";
+    if (playerSelection === computerSelection) {
+        return "tie";
+    }
+    else if (playerSelection === "Rock" && computerSelection === "Scissors") {
+        return "win";
+    }
+    else if (playerSelection === "Paper" && computerSelection === "Rock") {
+        return "win";
+    }
+    else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+        return "win";
+    }
+    else {
+        return "loss";
+    }
 }
 
 // plays a round of rock-paper-scissors
@@ -60,7 +73,6 @@ function playRound() {
     else if (result === "tie") {
         console.log(`You Tie! You both picked ${playerSelection}`);
     }
-
 }
 
 playRound();
