@@ -2,6 +2,8 @@ const options = ["Rock", "Paper", "Scissors"];
 const playerPickText = document.querySelector('#player-pick');
 const computerPickText = document.querySelector('#computer-pick');
 const resultText = document.querySelector('#result');
+const scoreText = document.querySelector('#scores');
+let scores = [0, 0, 0];
 
 // gets player's selection
 function getPlayerSelection() {
@@ -81,7 +83,7 @@ function playRound() {
     let playerSelection = getPlayerSelection();
     if (!checkSelection(playerSelection)) {
         resultText.textContent = 'Error, choose either "Rock", "Paper", or "Scissors"';
-        return;
+        return "error";
     }
     playerPickText.textContent = `You picked: ${playerSelection}`;
     
@@ -90,14 +92,24 @@ function playRound() {
 
     let result = getResult(playerSelection, computerSelection)
     resultText.textContent = getResultText(result, playerSelection, computerSelection);
+    return result;
+}
+
+function updateScores(result) {
+    if (result === "win") {
+        scores[0]++;
+    }
+    else if (result === "loss") {
+        scores[1]++;
+    }
+    else if (result === "tie") {
+        scores[2]++;
+    }
+    scoreText.textContent = `Score: ${scores[0]} Wins, ${scores[1]} Losses, ${scores[2]} Ties`;
 }
 
 function game() {
-    let numWin = 0;
-    let numLoss = 0;
-    let numTie = 0;
-
-    playRound();
+    updateScores(playRound());
 }
 
 game();
