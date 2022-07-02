@@ -1,8 +1,8 @@
-let options = ["Rock", "Paper", "Scissors"];
+const options = ["Rock", "Paper", "Scissors"];
 
 // gets player's selection
 function playerPlay() {
-    let playerSelection = fixSelection(prompt("pick"));
+    const playerSelection = fixSelection(prompt("pick"));
     return playerSelection;
 }
 
