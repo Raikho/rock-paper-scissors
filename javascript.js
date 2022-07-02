@@ -1,9 +1,9 @@
 const options = ["Rock", "Paper", "Scissors"];
 
 // gets player's selection
-function playerPlay() {
-    const playerSelection = fixSelection(prompt('Pick "Rock", "Paper", or "Scissors".'));
-    return playerSelection;
+function getPlayerSelection() {
+    let selection = fixSelection(prompt('Pick "Rock", "Paper", or "Scissors".'));
+    return selection;
 }
 
 // make case insensitive
@@ -24,12 +24,12 @@ function checkSelection(string) {
 }
 
 // gets computer's selection
-function computerPlay() {
-    let computerSelection = options[Math.floor(Math.random() * 3)];
-    return computerSelection;
+function getComputerSelection() {
+    let selection = options[Math.floor(Math.random() * 3)];
+    return selection;
 }
 
-// calculates result of round
+// calculates result of round, returning win/loss/tie
 function getResult(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return "tie";
@@ -64,7 +64,7 @@ function getResultText(result, playerSelection, computerSelection) {
 
 // plays a round of rock-paper-scissors
 function playRound() {
-    let playerSelection = playerPlay();
+    let playerSelection = getPlayerSelection();
     console.log(`Player selection: ${playerSelection}`);
     
     if (!checkSelection(playerSelection)) {
@@ -73,7 +73,7 @@ function playRound() {
     }
     document.querySelector('#player-pick').textContent = `You picked: ${playerSelection}`;
     
-    let computerSelection = computerPlay();
+    let computerSelection = getComputerSelection();
     console.log(`Computer selection: ${computerSelection}`);
     document.querySelector('#computer-pick').textContent = `Computer picked: ${computerSelection}`;
 
@@ -86,6 +86,10 @@ function playRound() {
 }
 
 function game() {
+    let numWin = 0;
+    let numLoss = 0;
+    let numTie = 0;
+    
     playRound();
 }
 
