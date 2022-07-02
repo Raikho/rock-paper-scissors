@@ -1,9 +1,9 @@
-// TODO: create function for player selection
+let options = ["Rock", "Paper", "Scissors"];
+
 // gets player's selection
 function playerPlay() {
     let playerSelection = fixSelection(prompt("pick"));
-
-    console.log(`Player selection: ${playerSelection}`);
+    return playerSelection;
 }
 
 // make case insensitive
@@ -13,16 +13,31 @@ function fixSelection(string) {
     return first + rest;
 }
 
-// TODO: create function to make selection case insensitive
+// check if string is one of the options
+function checkSelection(string) {
+    for (let i = 0; i < options.length; i++) {
+        if (string === options[i]) {
+            return true;
+        }
+    }
+    return false;
+}
 
 // gets computer's selection
 function computerPlay() {
-    let options = ["Rock", "Paper", "Scissors"];
     let computerSelection = options[Math.floor(Math.random() * 3)];
-    console.log(`Computer selection: ${computerSelection}`);
+    return computerSelection;
 }
+
 // TODO: create function to calculate winner
 
 // TODO: run game
-playerPlay();
-computerPlay();
+let playerSelection = playerPlay();
+console.log(`Player selection: ${playerSelection}`);
+
+if (!checkSelection(playerSelection)) {
+    console.log(`Error: Player did not input "Rock", "Paper", or "Scissors"`);
+}
+
+let computerSelection = computerPlay();
+console.log(`Computer selection: ${computerSelection}`);
