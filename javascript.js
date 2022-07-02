@@ -30,14 +30,37 @@ function computerPlay() {
 }
 
 // TODO: create function to calculate winner
-
-// TODO: run game
-let playerSelection = playerPlay();
-console.log(`Player selection: ${playerSelection}`);
-
-if (!checkSelection(playerSelection)) {
-    console.log(`Error: Player did not input "Rock", "Paper", or "Scissors"`);
+// calculates result of round
+function getResult(playerSelection, computerSelection) {
+    return "tie";
 }
 
-let computerSelection = computerPlay();
-console.log(`Computer selection: ${computerSelection}`);
+// plays a round of rock-paper-scissors
+function playRound() {
+    let playerSelection = playerPlay();
+    console.log(`Player selection: ${playerSelection}`);
+    
+    if (!checkSelection(playerSelection)) {
+        console.log(`Error: Player did not input "Rock", "Paper", or "Scissors"`);
+        return;
+    }
+    
+    let computerSelection = computerPlay();
+    console.log(`Computer selection: ${computerSelection}`);
+
+    let result = getResult(playerSelection, computerSelection)
+    console.log(`The result is: ${result}`);
+    
+    if (result === "win") {
+        console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
+    }
+    else if (result === "loss") {
+        console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
+    }
+    else if (result === "tie") {
+        console.log(`You Tie! You both picked ${playerSelection}`);
+    }
+
+}
+
+playRound();
