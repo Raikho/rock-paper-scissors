@@ -57,9 +57,11 @@ function playRound() {
         console.log(`Error: Player did not input "Rock", "Paper", or "Scissors"`);
         return;
     }
+    document.querySelector('#player-pick').textContent = `You picked: ${playerSelection}`;
     
     let computerSelection = computerPlay();
     console.log(`Computer selection: ${computerSelection}`);
+    document.querySelector('#computer-pick').textContent = `Computer picked: ${computerSelection}`;
 
     let result = getResult(playerSelection, computerSelection)
     console.log(`The result is: ${result}`);
