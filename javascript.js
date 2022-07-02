@@ -95,6 +95,7 @@ function playRound() {
     return result;
 }
 
+// update score array based on result
 function updateScores(result) {
     if (result === "win") {
         scores[0]++;
@@ -108,8 +109,11 @@ function updateScores(result) {
     scoreText.textContent = `Score: ${scores[0]} Wins, ${scores[1]} Losses, ${scores[2]} Ties`;
 }
 
-function game() {
-    updateScores(playRound());
+// play a game for n rounds
+function game(n) {
+    for (let i = 0; i < n; i++) {
+        updateScores(playRound());
+    }
 }
 
-game();
+game(2);
