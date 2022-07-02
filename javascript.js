@@ -48,6 +48,20 @@ function getResult(playerSelection, computerSelection) {
     }
 }
 
+function getResultText(result, playerSelection, computerSelection) {
+    let text;
+    if (result === "win") {
+        text = `You Win! ${playerSelection} beats ${computerSelection}`;
+    }
+    else if (result === "loss") {
+        text = `You Lose! ${computerSelection} beats ${playerSelection}`;
+    }
+    else if (result === "tie") {
+        text = `You Tie! You both picked ${playerSelection}`;
+    }
+    return text;
+}
+
 // plays a round of rock-paper-scissors
 function playRound() {
     let playerSelection = playerPlay();
@@ -65,16 +79,9 @@ function playRound() {
 
     let result = getResult(playerSelection, computerSelection)
     console.log(`The result is: ${result}`);
-    
-    if (result === "win") {
-        console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
-    }
-    else if (result === "loss") {
-        console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
-    }
-    else if (result === "tie") {
-        console.log(`You Tie! You both picked ${playerSelection}`);
-    }
+    let resultText = getResultText(result, playerSelection, computerSelection);
+    console.log(resultText);
+
 }
 
 playRound();
