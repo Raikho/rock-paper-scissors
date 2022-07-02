@@ -1,8 +1,12 @@
 const options = ["Rock", "Paper", "Scissors"];
+const playerPickText = document.querySelector('#player-pick');
+const computerPickText = document.querySelector('#computer-pick');
+const resultText = document.querySelector('#result');
 
 // gets player's selection
 function getPlayerSelection() {
     let selection = fixSelection(prompt('Pick "Rock", "Paper", or "Scissors".'));
+    console.log(`Player selection: ${selection}`);
     return selection;
 }
 
@@ -20,32 +24,38 @@ function checkSelection(string) {
             return true;
         }
     }
+    console.log(`Error: Player did not input "Rock", "Paper", or "Scissors"`);
     return false;
 }
 
 // gets computer's selection
 function getComputerSelection() {
     let selection = options[Math.floor(Math.random() * 3)];
+    console.log(`Computer selection: ${selection}`);
     return selection;
 }
 
 // calculates result of round, returning win/loss/tie
 function getResult(playerSelection, computerSelection) {
+    let result;
     if (playerSelection === computerSelection) {
-        return "tie";
+        result = "tie";
     }
     else if (playerSelection === "Rock" && computerSelection === "Scissors") {
-        return "win";
+        result = "win";
     }
     else if (playerSelection === "Paper" && computerSelection === "Rock") {
-        return "win";
+        result = "win";
     }
     else if (playerSelection === "Scissors" && computerSelection === "Paper") {
-        return "win";
+        result = "win";
     }
     else {
-        return "loss";
+        result = "loss";
     }
+
+    console.log(`The result is: ${result}`);
+    return result;
 }
 
 function getResultText(result, playerSelection, computerSelection) {
@@ -64,32 +74,29 @@ function getResultText(result, playerSelection, computerSelection) {
 
 // plays a round of rock-paper-scissors
 function playRound() {
+    playerPickText.textContent = '';
+    computerPickText.textContent = '';
+    resultText.textContent = '';
+
     let playerSelection = getPlayerSelection();
-    console.log(`Player selection: ${playerSelection}`);
-    
     if (!checkSelection(playerSelection)) {
-        console.log(`Error: Player did not input "Rock", "Paper", or "Scissors"`);
+        resultText.textContent = 'Error, choose either "Rock", "Paper", or "Scissors"';
         return;
     }
-    document.querySelector('#player-pick').textContent = `You picked: ${playerSelection}`;
+    playerPickText.textContent = `You picked: ${playerSelection}`;
     
     let computerSelection = getComputerSelection();
-    console.log(`Computer selection: ${computerSelection}`);
-    document.querySelector('#computer-pick').textContent = `Computer picked: ${computerSelection}`;
+    computerPickText.textContent = `Computer picked: ${computerSelection}`;
 
     let result = getResult(playerSelection, computerSelection)
-    console.log(`The result is: ${result}`);
-    let resultText = getResultText(result, playerSelection, computerSelection);
-    console.log(resultText);
-
-    document.querySelector('#result').textContent = resultText;
+    resultText.textContent = getResultText(result, playerSelection, computerSelection);
 }
 
 function game() {
     let numWin = 0;
     let numLoss = 0;
     let numTie = 0;
-    
+
     playRound();
 }
 
