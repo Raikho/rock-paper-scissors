@@ -1,9 +1,16 @@
 // TODO: create function for player selection
 // gets player's selection
 function playerPlay() {
-    let playerSelection = prompt("pick");
+    let playerSelection = fixSelection(prompt("pick"));
 
     console.log(`Player selection: ${playerSelection}`);
+}
+
+// make case insensitive
+function fixSelection(string) {
+    let first = string.slice(0, 1).toUpperCase();
+    let rest = string.slice(1).toLowerCase();
+    return first + rest;
 }
 
 // TODO: create function to make selection case insensitive
