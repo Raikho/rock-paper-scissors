@@ -2,7 +2,7 @@ const options = ["Rock", "Paper", "Scissors"];
 
 // gets player's selection
 function playerPlay() {
-    const playerSelection = fixSelection(prompt("pick"));
+    const playerSelection = fixSelection(prompt('Pick "Rock", "Paper", or "Scissors".'));
     return playerSelection;
 }
 
@@ -85,4 +85,8 @@ function playRound() {
     document.querySelector('#result').textContent = resultText;
 }
 
-playRound();
+function game() {
+    playRound();
+}
+
+game();
