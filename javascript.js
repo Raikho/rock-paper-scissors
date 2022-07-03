@@ -108,12 +108,3 @@ function updateScores(result) {
     }
     scoreText.textContent = `Score: ${scores[0]} Wins, ${scores[1]} Losses, ${scores[2]} Ties`;
 }
-
-// play a game for n rounds
-function game(n) {
-    for (let i = 0; i < n; i++) {
-        updateScores(playRound());
-    }
-}
-
-game(2);
