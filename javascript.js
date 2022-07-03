@@ -92,6 +92,8 @@ function playRound() {
 
     let result = getResult(playerSelection, computerSelection)
     resultText.textContent = getResultText(result, playerSelection, computerSelection);
+
+    updateScores(result);
     return result;
 }
 
