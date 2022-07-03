@@ -53,5 +53,9 @@ label {
 }
 
 input[type="radio"]:focus + label {
-    border: dashed 2px goldenrod;
+    border: dashed 2px gold;
+}
+
+label:hover {
+    background-color: goldenrod;
 }
