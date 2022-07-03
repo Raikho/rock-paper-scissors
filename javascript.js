@@ -5,31 +5,6 @@ const resultText = document.querySelector('#result');
 const scoreText = document.querySelector('#scores');
 let scores = [0, 0, 0];
 
-// gets player's selection
-function getPlayerSelection() {
-    let selection = fixSelection(prompt('Pick "Rock", "Paper", or "Scissors".'));
-    console.log(`Player selection: ${selection}`);
-    return selection;
-}
-
-// make case insensitive
-function fixSelection(string) {
-    let first = string.slice(0, 1).toUpperCase();
-    let rest = string.slice(1).toLowerCase();
-    return first + rest;
-}
-
-// check if string is one of the options
-function checkSelection(string) {
-    for (let i = 0; i < options.length; i++) {
-        if (string === options[i]) {
-            return true;
-        }
-    }
-    console.log(`Error: Player did not input "Rock", "Paper", or "Scissors"`);
-    return false;
-}
-
 // gets computer's selection
 function getComputerSelection() {
     let selection = options[Math.floor(Math.random() * 3)];
@@ -80,11 +55,7 @@ function playRound() {
     computerPickText.textContent = '';
     resultText.textContent = '';
 
-    let playerSelection = getPlayerSelection();
-    if (!checkSelection(playerSelection)) {
-        resultText.textContent = 'Error, choose either "Rock", "Paper", or "Scissors"';
-        return "error";
-    }
+    let playerSelection = document.form.choice.value;
     playerPickText.textContent = `You picked: ${playerSelection}`;
     
     let computerSelection = getComputerSelection();
