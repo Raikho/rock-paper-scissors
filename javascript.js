@@ -5,6 +5,13 @@ const resultText = document.querySelector('#result');
 const scoreText = document.querySelector('#scores');
 let scores = [0, 0, 0];
 
+// clear html text describing round
+function clearText() {
+    playerPickText.textContent = '';
+    computerPickText.textContent = '';
+    resultText.textContent = '';
+}
+
 // gets computer's selection
 function getComputerSelection() {
     let selection = options[Math.floor(Math.random() * 3)];
@@ -51,9 +58,7 @@ function getResultText(result, playerSelection, computerSelection) {
 
 // plays a round of rock-paper-scissors
 function playRound() {
-    playerPickText.textContent = '';
-    computerPickText.textContent = '';
-    resultText.textContent = '';
+    clearText();
 
     let playerSelection = document.form.choice.value;
     playerPickText.textContent = `You picked: ${playerSelection}`;
@@ -65,7 +70,6 @@ function playRound() {
     resultText.textContent = getResultText(result, playerSelection, computerSelection);
 
     updateScores(result);
-    return result;
 }
 
 // update score array based on result
