@@ -19,9 +19,8 @@ body {
 }
 
 button {
-    background-color: lightgray;
-    color: Indigo;
-    border-radius: 4%;
+    background-color: blue;
+    border-radius: 4px;
     font-weight: 700;
 }
 
@@ -32,8 +31,15 @@ button.choice {
 }
 
 button.play {
-    font-size: 48px;
-    padding: 15px 60px;
+    font-size: 32px;
+    padding: 10px 40px;
+    background-image: linear-gradient(#4696d3, #0972f1);
+    border: 1px solid #0077cc;
+    color: white;
+}
+
+button.play:hover {
+    background-image: linear-gradient(#4bacf7, #0972f1);
 }
 
 input[type="radio"] {
@@ -45,15 +51,15 @@ input[type="radio"] {
 label {
     font-size: 24px;
     padding: 10px 20px;
-    border: solid 2px indianred;
-    background-color: darkcyan;
+    border: solid 2px whitesmoke;
+    background-color: rgba(0, 139, 139, 30%);
     border-radius: 4px;
 }
 
 input[type="radio"]:focus + label {
-    border: dashed 2px gold;
+    background-color: #daa520;
 }
 
 label:hover {
-    background-color: goldenrod;
+    background-color: #daa52088;
 }
