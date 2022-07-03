@@ -6,7 +6,6 @@ body {
 }
 
 .container {
-    border: dotted 1px green; /*DEBUG*/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,7 +13,6 @@ body {
 }
 
 .choice-container {
-    border: dotted 1px red; /*DEBUG*/
     display: flex;
     justify-content: space-evenly;
     gap: 20px;

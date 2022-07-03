@@ -74,6 +74,7 @@ function playRound() {
     resultText.textContent = getResultText(result, playerSelection, computerSelection);
 
     updateScores(result);
+    document.querySelector('input[name="choice"]:checked').checked = false;
 }
 
 // update score array based on result
