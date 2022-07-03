@@ -61,6 +61,10 @@ function playRound() {
     clearText();
 
     let playerSelection = document.form.choice.value;
+    if (playerSelection === '') {
+        resultText.textContent = "Please select Rock, Paper, or Scissors.";
+        return;
+    }
     playerPickText.textContent = `You picked: ${playerSelection}`;
     
     let computerSelection = getComputerSelection();
