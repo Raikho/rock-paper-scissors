@@ -5,6 +5,15 @@ const resultText = document.querySelector('#result');
 const scoreText = document.querySelector('#scores');
 let scores = [0, 0, 0];
 
+const userButtons = document.querySelectorAll('div.user');
+const playButton = document.querySelector('button.play');
+userButtons.forEach(button => button.addEventListener('click', makeUserSelection));
+playButton.addEventListener('click', playRound);
+
+function makeUserSelection(event) {
+    console.log(this.dataset.value);
+}
+
 // clear html text describing round
 function clearText() {
     playerPickText.textContent = '';
@@ -58,6 +67,9 @@ function getResultText(result, playerSelection, computerSelection) {
 
 // plays a round of rock-paper-scissors
 function playRound() {
+    console.log('clicked play');
+    return;
+
     clearText();
 
     let playerSelection = document.form.choice.value;
