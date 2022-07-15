@@ -11,7 +11,14 @@ userButtons.forEach(button => button.addEventListener('click', makeUserSelection
 playButton.addEventListener('click', playRound);
 
 function makeUserSelection(event) {
-    console.log(this.dataset.value);
+    let thisValue = this.dataset.value;
+    userButtons.forEach(button => {
+        let value = button.dataset.value;
+        if (value === thisValue)
+            button.classList.add('selected');
+        else
+            button.classList.remove('selected');
+    });
 }
 
 // clear html text describing round
