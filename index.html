@@ -8,8 +8,10 @@
     <body>
         <h1>Rock Paper Scissors!</h1>
         <div class="container">
-            <div class="container left">
-                Left
+            <div class="container side">
+                <div class="option" id="player-rock">Rock</div>
+                <div class="option" id="player-paper">Paper</div>
+                <div class="option" id="player-scissors">Scissors</div>
                 <!-- <form class="choice-container" name="form">
                 <input type="radio" id="rock" name="choice" value="Rock">
                 <label for="rock">Rock</label>
@@ -20,15 +22,17 @@
                 </form> -->
             </div>
             <div class="container mid">
-                <div class="container top">
-                    ...
+                <div class="top">
+                    result
                 </div>
-                <div class="container bot">
+                <div class="bot">
                     <button onclick="playRound()" class="play">Play</button>
                 </div>
             </div>
-            <div class="container right">
-                Right
+            <div class="container side">
+                <div class="option" id="comp-rock">Rock</div>
+                <div class="option" id="comp-paper">Paper</div>
+                <div class="option" id="comp-scissors">Scissors</div>
             </div>
         </div>
         <p id="player-pick"></p>
