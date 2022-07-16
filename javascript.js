@@ -1,8 +1,7 @@
 const options = ["Rock", "Paper", "Scissors"];
-const playerPickText = document.querySelector('#player-pick');
 const computerPickText = document.querySelector('#computer-pick');
 const resultText = document.querySelector('#result');
-const scoreText = document.querySelector('#scores');
+const scoreText = document.querySelector('.scores');
 let scores = [0, 0, 0];
 
 const userButtons = document.querySelectorAll('div.user');
@@ -10,8 +9,11 @@ const playButton = document.querySelector('button.play');
 userButtons.forEach(button => button.addEventListener('click', makeUserSelection));
 playButton.addEventListener('click', playRound);
 
+let userSelection = '';
+
 function makeUserSelection(event) {
     let thisValue = this.dataset.value;
+    userSelection = thisValue;
     userButtons.forEach(button => {
         let value = button.dataset.value;
         if (value === thisValue)
@@ -23,7 +25,6 @@ function makeUserSelection(event) {
 
 // clear html text describing round
 function clearText() {
-    playerPickText.textContent = '';
     computerPickText.textContent = '';
     resultText.textContent = '';
 }
@@ -36,18 +37,18 @@ function getComputerSelection() {
 }
 
 // calculates result of round, returning win/loss/tie
-function getResult(playerSelection, computerSelection) {
+function getResult(userSelection, computerSelection) {
     let result;
-    if (playerSelection === computerSelection) {
+    if (userSelection === computerSelection) {
         result = "tie";
     }
-    else if (playerSelection === "Rock" && computerSelection === "Scissors") {
+    else if (userSelection === "Rock" && computerSelection === "Scissors") {
         result = "win";
     }
-    else if (playerSelection === "Paper" && computerSelection === "Rock") {
+    else if (userSelection === "Paper" && computerSelection === "Rock") {
         result = "win";
     }
-    else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+    else if (userSelection === "Scissors" && computerSelection === "Paper") {
         result = "win";
     }
     else {
@@ -58,16 +59,16 @@ function getResult(playerSelection, computerSelection) {
     return result;
 }
 
-function getResultText(result, playerSelection, computerSelection) {
+function getResultText(result, userSelection, computerSelection) {
     let text;
     if (result === "win") {
-        text = `You Win! ${playerSelection} beats ${computerSelection}`;
+        text = `You Win! ${userSelection} beats ${computerSelection}`;
     }
     else if (result === "loss") {
-        text = `You Lose! ${computerSelection} beats ${playerSelection}`;
+        text = `You Lose! ${computerSelection} beats ${userSelection}`;
     }
     else if (result === "tie") {
-        text = `You Tie! You both picked ${playerSelection}`;
+        text = `You Tie! You both picked ${userSelection}`;
     }
     return text;
 }
@@ -75,25 +76,21 @@ function getResultText(result, playerSelection, computerSelection) {
 // plays a round of rock-paper-scissors
 function playRound() {
     console.log('clicked play');
-    return;
 
     clearText();
 
-    let playerSelection = document.form.choice.value;
-    if (playerSelection === '') {
+    if (userSelection === '') {
         resultText.textContent = "Please select Rock, Paper, or Scissors.";
         return;
     }
-    playerPickText.textContent = `You picked: ${playerSelection}`;
-    
+
     let computerSelection = getComputerSelection();
     computerPickText.textContent = `Computer picked: ${computerSelection}`;
 
-    let result = getResult(playerSelection, computerSelection)
-    resultText.textContent = getResultText(result, playerSelection, computerSelection);
+    let result = getResult(userSelection, computerSelection)
+    resultText.textContent = getResultText(result, userSelection, computerSelection);
 
     updateScores(result);
-    document.querySelector('input[name="choice"]:checked').checked = false;
 }
 
 // update score array based on result

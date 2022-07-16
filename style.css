@@ -8,7 +8,6 @@ body {
 .container {
     display: flex;
     flex-direction: row;
-    border: dotted 1px green;
     min-height: 200px;
 }
 
@@ -26,7 +25,6 @@ body {
 }
 
 .container.mid > * {
-    border: dotted 2px red;
     display: flex;
     justify-content: center;
     align-items: center;
