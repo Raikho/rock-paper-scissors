@@ -1,6 +1,5 @@
 const options = ["Rock", "Paper", "Scissors"];
-const computerPickText = document.querySelector('#computer-pick');
-const resultText = document.querySelector('#result');
+const resultText = document.querySelector('.result');
 const scoreText = document.querySelector('.scores');
 let scores = [0, 0, 0];
 
@@ -11,11 +10,6 @@ userButtons.forEach(button => button.addEventListener('click', makeUserSelection
 playButton.addEventListener('click', playRound);
 
 let userSelection = '';
-
-function clearText() {
-    computerPickText.textContent = '';
-    resultText.textContent = '';
-}
 
 function makeUserSelection(event) {
     let value = this.dataset.value;
@@ -76,6 +70,15 @@ function getResultText(result, userSelection, computerSelection) {
     return text;
 }
 
+function setResultText(result) {
+    if (result === 'win')
+        resultText.textContent = 'You Win!';
+    else if (result === 'loss')
+        resultText.textContent = 'You Lose!';
+    else if (result === 'tie')
+        resultText.textContent = "It's a Tie!";
+}
+
 function updateScores(result) {
     if (result === "win") {
         scores[0]++;
@@ -90,20 +93,13 @@ function updateScores(result) {
 }
 
 function playRound() {
-    console.log('clicked play');
-
-    clearText();
-
     if (userSelection === '') {
         scoreText.textContent = "Please select Rock, Paper, or Scissors.";
         return;
     }
-
     let computerSelection = getComputerSelection();
-    computerPickText.textContent = `Computer picked: ${computerSelection}`;
 
     let result = getResult(userSelection, computerSelection)
-    resultText.textContent = getResultText(result, userSelection, computerSelection);
-
+    setResultText(result);
     updateScores(result);
 }
