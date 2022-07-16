@@ -5,33 +5,39 @@ const scoreText = document.querySelector('.scores');
 let scores = [0, 0, 0];
 
 const userButtons = document.querySelectorAll('div.user');
+const computerButtons = document.querySelectorAll('div.comp');
 const playButton = document.querySelector('button.play');
 userButtons.forEach(button => button.addEventListener('click', makeUserSelection));
 playButton.addEventListener('click', playRound);
 
 let userSelection = '';
 
-function makeUserSelection(event) {
-    let thisValue = this.dataset.value;
-    userSelection = thisValue;
-    userButtons.forEach(button => {
-        let value = button.dataset.value;
-        if (value === thisValue)
-            button.classList.add('selected');
-        else
-            button.classList.remove('selected');
-    });
-}
-
 function clearText() {
     computerPickText.textContent = '';
     resultText.textContent = '';
 }
 
+function makeUserSelection(event) {
+    let value = this.dataset.value;
+    userSelection = value;
+    selectButtonHighlight(userButtons, value);
+}
+
 function getComputerSelection() {
     let selection = options[Math.floor(Math.random() * 3)];
     console.log(`Computer selection: ${selection}`);
+    selectButtonHighlight(computerButtons, selection);
     return selection;
+}
+
+function selectButtonHighlight(buttons, value) {
+    buttons.forEach(button => {
+        let buttonValue = button.dataset.value;
+        if (buttonValue === value)
+            button.classList.add('selected');
+        else
+            button.classList.remove('selected');
+    });
 }
 
 function getResult(userSelection, computerSelection) {
