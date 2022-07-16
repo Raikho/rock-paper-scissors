@@ -5,6 +5,11 @@ body {
     text-align: center;
 }
 
+h1 {
+    font-size: 48px;
+    color: lavender;
+}
+
 .container {
     display: flex;
     flex-direction: row;

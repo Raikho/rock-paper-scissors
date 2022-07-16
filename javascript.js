@@ -1,15 +1,15 @@
 const options = ["Rock", "Paper", "Scissors"];
+let scores = [0, 0, 0];
+let userSelection = '';
+
 const resultText = document.querySelector('.result');
 const scoreText = document.querySelector('.scores');
-let scores = [0, 0, 0];
 
 const userButtons = document.querySelectorAll('div.user');
 const computerButtons = document.querySelectorAll('div.comp');
 const playButton = document.querySelector('button.play');
 userButtons.forEach(button => button.addEventListener('click', makeUserSelection));
 playButton.addEventListener('click', playRound);
-
-let userSelection = '';
 
 function makeUserSelection(event) {
     let value = this.dataset.value;
