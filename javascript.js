@@ -23,20 +23,17 @@ function makeUserSelection(event) {
     });
 }
 
-// clear html text describing round
 function clearText() {
     computerPickText.textContent = '';
     resultText.textContent = '';
 }
 
-// gets computer's selection
 function getComputerSelection() {
     let selection = options[Math.floor(Math.random() * 3)];
     console.log(`Computer selection: ${selection}`);
     return selection;
 }
 
-// calculates result of round, returning win/loss/tie
 function getResult(userSelection, computerSelection) {
     let result;
     if (userSelection === computerSelection) {
@@ -73,27 +70,6 @@ function getResultText(result, userSelection, computerSelection) {
     return text;
 }
 
-// plays a round of rock-paper-scissors
-function playRound() {
-    console.log('clicked play');
-
-    clearText();
-
-    if (userSelection === '') {
-        resultText.textContent = "Please select Rock, Paper, or Scissors.";
-        return;
-    }
-
-    let computerSelection = getComputerSelection();
-    computerPickText.textContent = `Computer picked: ${computerSelection}`;
-
-    let result = getResult(userSelection, computerSelection)
-    resultText.textContent = getResultText(result, userSelection, computerSelection);
-
-    updateScores(result);
-}
-
-// update score array based on result
 function updateScores(result) {
     if (result === "win") {
         scores[0]++;
@@ -105,4 +81,23 @@ function updateScores(result) {
         scores[2]++;
     }
     scoreText.textContent = `Score: ${scores[0]} Wins, ${scores[1]} Losses, ${scores[2]} Ties`;
+}
+
+function playRound() {
+    console.log('clicked play');
+
+    clearText();
+
+    if (userSelection === '') {
+        scoreText.textContent = "Please select Rock, Paper, or Scissors.";
+        return;
+    }
+
+    let computerSelection = getComputerSelection();
+    computerPickText.textContent = `Computer picked: ${computerSelection}`;
+
+    let result = getResult(userSelection, computerSelection)
+    resultText.textContent = getResultText(result, userSelection, computerSelection);
+
+    updateScores(result);
 }
